@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryHint="Tìm địa chỉ tại Hà Nội..." />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvCurrentAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="#FFF9C4"
+        android:text="Chạm vào bản đồ để chọn vị trí..."
+        android:textColor="#333333"
+        android:textSize="13sp" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mapPicker"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnConfirmLocation"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="16dp"
+        android:text="XÁC NHẬN VỊ TRÍ NÀY"
+        android:backgroundTint="#D32F2F"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="bottom"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="4dp">
+
+    <!-- 1. Cột Nhóm máu: Tăng weight lên 1.5 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhóm máu*"
+            android:textSize="11sp"
+            android:textColor="#555"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spNhomMauRow"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:padding="0dp" />
+    </LinearLayout>
+
+    <!-- 2. Cột Số lượng: Giữ weight 1.0 (vì chỉ nhập số) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_marginStart="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số lượng"
+            android:textSize="11sp"
+            android:textColor="#555"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/etSoLuongRow"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:drawable/edit_text"
+            android:hint="ml"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- 3. Cột Mức độ: Giảm weight xuống 1.8 (Vừa đủ cho chữ Khẩn cấp) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.8"
+        android:layout_marginStart="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mức độ*"
+            android:textSize="11sp"
+            android:textColor="#555"
+            android:layout_marginBottom="4dp"/>
+
+        <Spinner
+            android:id="@+id/spUrgencyRow"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:padding="0dp" />
+    </LinearLayout>
+
+    <!-- 4. Nút xóa: Dùng size cố định để không chiếm weight -->
+    <ImageButton
+        android:id="@+id/btnDeleteRow"
+        android:layout_width="32dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="2dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="centerInside"
+        android:src="@android:drawable/ic_menu_delete"
+        app:tint="#D32F2F" />
+
+</LinearLayout>

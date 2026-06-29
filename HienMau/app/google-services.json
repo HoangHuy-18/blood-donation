@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "563733093363",
+    "project_id": "test-aa20d",
+    "storage_bucket": "test-aa20d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563733093363:android:9ef65d827b0826d4f09086",
+        "android_client_info": {
+          "package_name": "com.example.hienmau"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1aZSosDb-hfJ_mr8l8Nib5lhWUTTGJ68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

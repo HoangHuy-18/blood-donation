@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarVerify"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#D32F2F"
+        app:title="Xác minh nhóm máu"
+        app:titleTextColor="#FFFFFF" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gửi bằng chứng nhóm máu"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#222"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Vui lòng cung cấp ảnh chụp giấy chứng nhận hiến máu hoặc kết quả xét nghiệm để Admin xác nhận nhóm máu của bạn."
+                android:textColor="#666"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhóm máu trên giấy tờ:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Spinner
+                    android:id="@+id/spnVerifyNhomMau"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spnVerifyHeRh"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSelectedImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:minHeight="120dp"
+                android:background="#F9F9F9"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddMoreImages"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:text="Thêm ảnh"
+                app:icon="@android:drawable/ic_menu_add"
+                app:strokeColor="#D32F2F"
+                app:iconTint="#D32F2F"
+                android:textColor="#D32F2F"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEE"
+                android:layout_marginVertical="24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu ý:"
+                android:textStyle="bold"
+                android:textColor="#222"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Ảnh chụp cần rõ ràng, không bị mờ.\n• Thông tin họ tên trên giấy tờ phải khớp với hồ sơ.\n• Quá trình duyệt có thể mất từ 1-2 ngày làm việc."
+                android:textColor="#888"
+                android:textSize="13sp"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSendVerify"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="GỬI YÊU CẦU XÁC MINH"
+        android:backgroundTint="#D32F2F"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:cornerRadius="12dp"/>
+
+</LinearLayout>

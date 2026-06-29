@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Báo cáo bài viết này"
+        android:textColor="#D32F2F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn lý do báo cáo:"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/rgReportReasons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbFakeNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tin giả / Sai sự thật"
+            android:checked="true"
+            android:paddingStart="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbSpam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nội dung trùng lặp / Spam"
+            android:paddingStart="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rbInappropriate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ngôn từ không phù hợp"
+            android:paddingStart="8dp"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edtReportDetails"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="12dp"
+        android:hint="Mô tả chi tiết thêm (không bắt buộc)..."
+        android:gravity="top"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="14sp" />
+</LinearLayout>

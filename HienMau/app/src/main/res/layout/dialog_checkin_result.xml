@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_white"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="#E0E0E0" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xác nhận kết quả hiến máu"
+        android:textColor="#D32F2F"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#F5F5F5"
+        app:cardCornerRadius="12dp"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvAvatarDialog"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/bg_circle_red"
+                android:backgroundTint="#E3F2FD"
+                android:gravity="center"
+                android:text="H"
+                android:textColor="#1976D2"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTenNguoiHienDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cà Hoàng Huy"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSdtDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SĐT: 0987.654.321"
+                    android:textColor="#757575"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Ngày hiến"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btnPickNgayHien"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:text="Chọn ngày"
+        android:textColor="#757575"
+        android:textAlignment="viewStart"
+        app:strokeColor="#E0E0E0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="KẾT QUẢ ĐO LÂM SÀNG"
+        android:textColor="#D32F2F"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chiều cao (cm)"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/etChieuCaoResult"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Ví dụ: 170"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View android:layout_width="16dp" android:layout_height="1dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cân nặng (kg)"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/etCanNangResult"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Ví dụ: 65.5"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Huyết áp tối đa (Tâm thu)"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/etHuyetApMaxResult"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Ngưỡng: 90 - 140"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View android:layout_width="16dp" android:layout_height="1dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Huyết áp tối thiểu (Tâm trương)"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/etHuyetApMinResult"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Ngưỡng: 60 - 90"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvYTeKhuyenNghiAlert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#FFF3E0"
+        android:padding="10dp"
+        android:text="Mời nhập thông tin lâm sàng để hệ thống tính toán ràng buộc sức khỏe."
+        android:textColor="#E65100"
+        android:textSize="13sp"
+        android:textStyle="italic"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhóm máu"
+                android:textSize="12sp" />
+            <Spinner
+                android:id="@+id/spNhomMauResult"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext" />
+        </LinearLayout>
+
+        <View android:layout_width="16dp" android:layout_height="1dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hệ Rh"
+                android:textSize="12sp" />
+            <Spinner
+                android:id="@+id/spRhResult"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Thể tích thực thu (ml)"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/etLuongMauResult"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="Nhập thể tích, ví dụ: 350"
+        android:inputType="number"
+        android:paddingHorizontal="12dp"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKhongThamGiaResult"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:backgroundTint="#FF9800"
+                android:text="KHÔNG HIẾN"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="8dp" />
+
+            <View android:layout_width="12dp" android:layout_height="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHoanTatResult"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:backgroundTint="#4CAF50"
+                android:text="HOÀN TẤT"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="8dp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHuyResult"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:text="QUAY LẠI"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            app:cornerRadius="8dp"
+            app:strokeColor="#BDBDBD" />
+
+    </LinearLayout>
+</LinearLayout>

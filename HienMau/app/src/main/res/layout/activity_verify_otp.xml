@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:padding="24dp">
+
+    <ImageButton
+        android:id="@+id/btnBackOtp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/chevron_right"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/btnBackOtp"
+        android:layout_marginTop="32dp">
+
+        <FrameLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_circle_red"
+            android:backgroundTint="#F8E8E8"
+            android:layout_marginBottom="24dp">
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_dialog_email"
+                android:layout_gravity="center"
+                app:tint="#D32F2F"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kiểm tra email của bạn"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#111111"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvOtpDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chúng tôi đã gửi mã 6 chữ số đến email của bạn."
+            android:textSize="15sp"
+            android:textColor="#777777"
+            android:layout_marginBottom="32dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="6"
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:id="@+id/etOtp1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_otp_box"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#B00000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOtp2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_otp_box"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#B00000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOtp3"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_otp_box"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#B00000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOtp4"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_otp_box"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#B00000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOtp5"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_otp_box"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#B00000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOtp6"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_otp_box"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#B00000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvResendCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa nhận được? Gửi lại sau 0:59"
+            android:textSize="14sp"
+            android:textColor="#555555" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnXacMinhOtp"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:text="Xác minh"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#D32F2F" /> </RelativeLayout>

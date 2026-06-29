@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_48"
+        android:title="Bảng tin" />
+
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@drawable/map_48"
+        android:title="Bản đồ" />
+
+    <!-- NÚT QUÉT QR Ở CHÍNH GIỮA -->
+    <item
+        android:id="@+id/nav_scan"
+        android:icon="@drawable/qr_code_scanner_48"
+        android:title="Quét mã" />
+
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/schedule_48"
+        android:title="Hoạt động" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/digital_wellbeing"
+        android:title="Cá nhân" />
+</menu>
