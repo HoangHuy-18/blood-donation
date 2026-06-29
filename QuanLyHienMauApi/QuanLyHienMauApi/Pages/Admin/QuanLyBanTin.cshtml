@@ -1,0 +1,204 @@
+﻿@page
+@model QuanLyHienMauApi.Pages.Admin.QuanLyBanTinModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý bản tin";
+}
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm border-0 bg-danger text-white rounded-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="fw-bold mb-0">@Model.TotalUrgent</h2>
+                    <small>@(Model.CurrentTab == 0 ? "Tin khẩn cấp đang mở" : "Tin khẩn cấp đã hoàn tất")</small>
+                </div>
+                <i class="fa-solid fa-droplet fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm border-0 bg-primary text-white rounded-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="fw-bold mb-0">@Model.TotalEvents</h2>
+                    <small>@(Model.CurrentTab == 0 ? "Sự kiện đang diễn ra" : "Sự kiện đã hoàn tất")</small>
+                </div>
+                <i class="fa-solid fa-calendar-check fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 shadow-sm border-0 bg-success text-white rounded-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="fw-bold mb-0">@Model.TotalBloodCollected ml</h2>
+                    <small>Tổng máu đã kết nối</small>
+                </div>
+                <i class="fa-solid fa-heart-pulse fs-1 opacity-50"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="nav nav-tabs mb-4 border-bottom-0">
+    <li class="nav-item">
+        <a class="nav-link @(Model.CurrentTab == 0 ? "active fw-bold text-danger border-bottom border-danger border-3" : "text-muted")"
+               href="?trangThai=0" style="background: none; border-radius: 0;">
+            <i class="fa-solid fa-folder-open me-2"></i> Đang mở
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @(Model.CurrentTab == 2 ? "active fw-bold text-success border-bottom border-success border-3" : "text-muted")"
+               href="?trangThai=2" style="background: none; border-radius: 0;">
+            <i class="fa-solid fa-circle-check me-2"></i> Đã hoàn tất
+        </a>
+    </li>
+</ul>
+
+<div class="custom-card p-4">
+
+    <form method="get" class="row g-3 mb-4">
+        <input type="hidden" name="trangThai" value="@Model.CurrentTab" /> 
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control" placeholder="Tìm bệnh viện, nội dung...">
+        </div>
+        <div class="col-md-3">
+            <select name="loaiTin" class="form-select">
+                <option value="">Tất cả loại tin</option>
+                <option value="0">Khẩn cấp</option>
+                <option value="1">Sự kiện</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-dark w-100">Lọc dữ liệu</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Bệnh viện/Người đăng</th>
+                    <th>Loại tin</th>
+                    <th>Nhóm máu cần</th>
+                    <th>Ngày đăng</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ListBanTin.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-muted">Không có bài đăng nào trong mục này.</td>
+                    </tr>
+                }
+                @foreach (var item in Model.ListBanTin)
+                {
+                    <tr class="transition-hover">
+                        <td>
+                            <div class="fw-bold">@item.TenBenhVien</div>
+                            <div class="text-muted small">Người đăng: @item.NguoiDang?.HoTen</div>
+                        </td>
+                        <td>
+                            <span class="badge @(item.LoaiTin == 0 ? "bg-danger" : "bg-primary")">
+                                @(item.LoaiTin == 0 ? "Khẩn cấp" : "Sự kiện")
+                            </span>
+                            
+                        </td>
+                        <td>
+                            @foreach (var ct in item.ChiTiets)
+                            {
+                                <span class="badge border text-dark me-1">@ct.NhomMau@ct.Rh</span>
+                            }
+                        </td>
+                        <td>@item.NgayDang.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td class="text-center">
+                            <button class="btn-action btn-view" onclick="openQuickView(@item.ID)"><i class="fa-solid fa-eye"></i></button>
+                            <button class="btn-action btn-reject" onclick="deletePost(@item.ID)"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="quickViewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 border-0">
+            <div class="modal-header border-0 bg-light">
+                <h5 class="modal-title fw-bold">Chi tiết bản tin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4" id="modalContent">
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        async function openQuickView(id) {
+        const modal = new bootstrap.Modal(document.getElementById('quickViewModal'));
+        const content = document.getElementById('modalContent');
+        content.innerHTML = '<div class="text-center p-5"><i class="fa-solid fa-spinner fa-spin fs-1"></i></div>';
+        modal.show();
+
+        try {
+        const response = await fetch(`/api/YeuCauMau/${id}`);
+        if (response.ok) {
+        const data = await response.json();
+            
+        const noiDung = data.noiDung || data.NoiDung || 'Không có lời nhắn';
+        const diaChi = data.diaChiBenhVien || data.DiaChiBenhVien || 'Không có địa chỉ';
+        const lat = data.viDo || data.ViDo || 0;
+        const lng = data.kinhDo || data.KinhDo || 0;
+
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+
+        content.innerHTML = `
+        <div class="row">
+        <div class="col-md-6 border-end">
+        <h6 class="text-muted small fw-bold mb-3"><i class="fa-solid fa-message me-2"></i>NỘI DUNG LỜI NHẮN</h6>
+        <p class="bg-light p-3 rounded-3 text-dark">${noiDung}</p>
+        </div>
+        <div class="col-md-6 ps-4">
+        <h6 class="text-muted small fw-bold mb-3"><i class="fa-solid fa-location-dot me-2 text-danger"></i>ĐỊA CHỈ BỆNH VIỆN</h6>
+        <p class="fw-bold text-dark mb-4">${diaChi}</p>
+                        
+        <a href="${mapUrl}" target="_blank" class="btn btn-danger rounded-pill px-4 shadow-sm">
+        <i class="fa-solid fa-map-location-dot me-2"></i>Xem vị trí trên bản đồ
+        </a>
+        </div>
+        </div>
+        `;
+        }
+        } catch (e) {
+        content.innerHTML = '<p class="text-danger text-center mt-3">Lỗi tải dữ liệu!</p>';
+        }
+        }
+
+        function deletePost(id) {
+        Swal.fire({
+        title: 'Xác nhận xóa?',
+        text: "Bài đăng này sẽ bị xóa vĩnh viễn!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Xóa ngay',
+        cancelButtonText: 'Hủy'
+        }).then(async (result) => {
+        if (result.isConfirmed) {
+        const response = await fetch(`/api/YeuCauMau/${id}`, { method: 'DELETE' });
+        if (response.ok) {
+        Swal.fire('Đã xóa!', '', 'success').then(() => location.reload());
+        } else {
+        Swal.fire('Lỗi', 'Không thể xóa bài đăng', 'error');
+        }
+        }
+        });
+        }
+    </script>
+}

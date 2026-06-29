@@ -1,0 +1,170 @@
+﻿@page
+@model QuanLyHienMauApi.Pages.Admin.DuyetCoSoModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Duyệt Hồ Sơ Cơ Sở Y Tế";
+    @Html.AntiForgeryToken()
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Phê duyệt Cơ sở y tế</h3>
+        <p class="text-muted small">Quản lý và xác thực thông tin các bệnh viện, phòng khám tham gia hệ thống.</p>
+    </div>
+    <span class="badge bg-danger rounded-pill px-3 py-2">@Model.DanhSachCho.Count hồ sơ mới</span>
+</div>
+
+<div class="custom-card">
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>Thông tin cơ sở</th>
+                    <th>Mã số thuế</th>
+                    <th>Địa chỉ & Tọa độ</th>
+                    <th>Hồ sơ pháp lý</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.DanhSachCho)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-light p-2 rounded-3 me-3">
+                                    <i class="fa-solid fa-hospital-user text-danger"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">@item.ThongTinTaiKhoan.HoTen</div>
+                                    <div class="text-muted small">@item.ThongTinTaiKhoan.Email</div>
+                                    <div class="text-muted x-small">SĐT: @item.ThongTinTaiKhoan.SDT</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><code class="text-dark">@item.MaSoThue</code></td>
+                        <td>
+                            <div class="small text-wrap" style="max-width: 250px;">
+                                <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                                @item.ThongTinTaiKhoan.DiaChi
+                            </div>
+                            @if (item.ThongTinTaiKhoan.ViDo.HasValue && item.ThongTinTaiKhoan.KinhDo.HasValue)
+                            {
+                                <a href="https://www.google.com/maps/search/?api=1&query=@item.ThongTinTaiKhoan.ViDo,@item.ThongTinTaiKhoan.KinhDo"
+                                       target="_blank" class="text-primary x-small text-decoration-none">
+                                    <i class="fa-solid fa-map-location-dot"></i> Xem trên bản đồ
+                                </a>
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                @if (!string.IsNullOrEmpty(item.AnhGiayPhep))
+                                {
+                                    <a href="@item.AnhGiayPhep" target="_blank" class="btn-action btn-view" title="Xem Giấy Phép">
+                                        <i class="fa-solid fa-file-contract"></i>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(item.AnhQuyetDinh))
+                                {
+                                    <a href="@item.AnhQuyetDinh" target="_blank" class="btn-action btn-view" title="Xem Quyết Định">
+                                        <i class="fa-solid fa-file-signature"></i>
+                                    </a>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <button onclick="duyetCoSo(@item.ID, 1)" class="btn-action btn-approve" title="Phê duyệt">
+                                    <i class="fa-solid fa-check"></i>
+                                </button>
+                                <button onclick="duyetCoSo(@item.ID, 2)" class="btn-action btn-reject" title="Từ chối">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>      
+        async function duyetCoSo(id, status) {
+        if (status === 1) {
+        // TRƯỜNG HỢP: PHÊ DUYỆT
+        Swal.fire({
+        title: 'Xác nhận duyệt?',
+        text: "Cơ sở này sẽ có thể đăng nhập vào hệ thống.",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#2e7d32',
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: 'Hủy'
+        }).then(async (result) => {
+        if (result.isConfirmed) {
+        await thucHienGoiAPI(id, status, "");
+        }
+        });
+        } else {
+        const { value: lyDo } = await Swal.fire({
+        title: 'Lý do từ chối',
+        input: 'textarea',
+        inputPlaceholder: 'Ví dụ: Ảnh giấy phép bị mờ, Mã số thuế không đúng...',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#c62828',
+        confirmButtonText: 'Từ chối & Xóa hồ sơ',
+        cancelButtonText: 'Quay lại',
+        inputValidator: (value) => {
+        if (!value) {
+        return 'Bạn phải nhập lý do để người dùng biết tại sao bị từ chối!'
+        }
+        }
+        });
+
+        if (lyDo) {
+        await thucHienGoiAPI(id, status, lyDo);
+        }
+        }
+        }
+
+        
+        async function thucHienGoiAPI(id, status, lyDo) {
+        Swal.fire({
+        title: 'Đang xử lý...',
+        text: 'Vui lòng chờ trong giây lát',
+        allowOutsideClick: false,
+        didOpen: () => {
+        Swal.showLoading(); // Hiện icon xoay xoay
+        }
+        });
+        try {
+        const url = `/api/CoSoYTe/DuyetHoSo?id=${id}&status=${status}&lyDo=${encodeURIComponent(lyDo)}`;
+                
+        const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+        }
+        });
+
+        if (response.ok) {
+        Swal.fire({
+        title: 'Thành công!',
+        text: status === 1 ? 'Đã phê duyệt hồ sơ.' : 'Đã gửi mail thông báo và xóa hồ sơ rác.',
+        icon: 'success'
+        }).then(() => location.reload());
+        } else {
+        const errorText = await response.text();
+        Swal.fire('Lỗi!', 'Máy chủ phản hồi: ' + errorText, 'error');
+        }
+        } catch (error) {
+        Swal.fire('Lỗi!', 'Không thể kết nối đến máy chủ.', 'error');
+        }
+        }
+    </script>
+}

@@ -1,0 +1,117 @@
+﻿@page
+@model QuanLyHienMauApi.Pages.Admin.QuanLyTaiKhoanModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý tài khoản";
+}
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm border-0 bg-white rounded-4 border-start border-danger border-5">
+            <h2 class="fw-bold mb-0">@Model.TongCaNhan</h2>
+            <p class="text-muted mb-0">Người hiến cá nhân</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm border-0 bg-white rounded-4 border-start border-primary border-5">
+            <h2 class="fw-bold mb-0">@Model.TongCoSo</h2>
+            <p class="text-muted mb-0">Cơ sở y tế hệ thống</p>
+        </div>
+    </div>
+</div>
+
+<div class="custom-card p-4">
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-5">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" name="search" class="form-control border-start-0" placeholder="Tìm theo tên hoặc số điện thoại...">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <select name="loaitk" class="form-select">
+                <option value="">Tất cả loại tài khoản</option>
+                <option value="0">Cá nhân</option>
+                <option value="1">Cơ sở y tế</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-dark w-100">Lọc</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Người dùng</th>
+                    <th>Liên hệ</th>
+                    <th>Loại tài khoản</th>
+                    <th>Trạng thái</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.DanhSachTaiKhoan)
+                {
+                    <tr class="transition-hover">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-light p-2 rounded-circle me-3 text-center" style="width: 40px; height: 40px;">
+                                    <i class="fa-solid @(item.LoaiTaiKhoan == 0 ? "fa-user" : "fa-hospital") text-muted"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">@item.HoTen</div>
+                                    <small class="text-muted">ID: #@item.ID</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>@item.SDT</div>
+                            <small class="text-muted">@item.Email</small>
+                        </td>
+                        <td>
+                            @if (item.LoaiTaiKhoan == 0)
+                            {
+                                <span class="badge bg-info text-dark">
+                                    <i class="fa-solid fa-user me-1"></i> Cá nhân
+                                </span>
+                            }
+                            else if (item.LoaiTaiKhoan == 1)
+                            {
+                                <span class="badge bg-warning text-dark">
+                                    <i class="fa-solid fa-hospital me-1"></i> Cơ sở y tế
+                                </span>
+                            }
+                            else if (item.LoaiTaiKhoan == 2)
+                            {
+                                <span class="badge bg-danger">
+                                    <i class="fa-solid fa-user-shield me-1"></i> Admin
+                                </span>
+                            }
+                        </td>
+                        <td>
+                            <span class="badge @(item.TrangThai == 0 ? "bg-success" : "bg-danger")">
+                                @(item.TrangThai == 0 ? "Hoạt động" : "Bị khóa")
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            @if (item.LoaiTaiKhoan != 2) 
+                            {
+                                <form method="post" asp-page-handler="ToggleLock" asp-route-id="@item.ID" onsubmit="return confirm('Xác nhận thay đổi trạng thái tài khoản này?')">
+                                    <button type="submit" class="btn btn-sm @(item.TrangThai == 0 ? "btn-outline-danger" : "btn-outline-success")" style="width: 100px;">
+                                        <i class="fa-solid @(item.TrangThai == 0 ? "fa-lock" : "fa-lock-open") me-1"></i>
+                                        @(item.TrangThai == 0 ? "Khóa" : "Mở khóa")
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span class="text-muted small">Hệ thống</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

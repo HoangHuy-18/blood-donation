@@ -1,0 +1,132 @@
+﻿@page
+@model QuanLyHienMauApi.Pages.Admin.DuyetNhomMauModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Duyệt nhóm máu";
+}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Xác minh nhóm máu</h3>
+        <p class="text-muted small">Đối chiếu ảnh bằng chứng để xác thực nhóm máu cho tình nguyện viên.</p>
+    </div>
+    <span class="badge bg-danger rounded-pill px-3 py-2">@Model.ListChoDuyet.Count yêu cầu mới</span>
+</div>
+
+<div class="custom-card">
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th class="ps-4">Tình nguyện viên</th>
+                    <th>Nhóm máu khai báo</th>
+                    <th>Bằng chứng (Ảnh)</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.ListChoDuyet.Any())
+                {
+                    <tr>
+                        <td colspan="4" class="text-center py-5 text-muted">
+                            <i class="fa-solid fa-inbox fs-1 d-block mb-2"></i>
+                            Không có yêu cầu nào chờ duyệt.
+                        </td>
+                    </tr>
+                }
+                @foreach (var item in Model.ListChoDuyet)
+                {
+                    <tr>
+                        <td class="ps-4">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-light p-2 rounded-3 me-3 text-primary">
+                                    <i class="fa-solid fa-user-check"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">@item.ThongTinTaiKhoan?.HoTen</div>
+                                    <div class="text-muted x-small">ID: #@item.ID</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge bg-danger fs-6 px-3">@item.NhomMau@item.HeRh</span>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                @if (!string.IsNullOrEmpty(item.AnhXacMinh))
+                                {
+                                    var imgs = item.AnhXacMinh.Split(';');
+                                    int count = 1;
+                                    foreach (var img in imgs)
+                                    {
+                                        <a href="@img" target="_blank" class="btn-action btn-view" title="Xem ảnh @count">
+                                            <i class="fa-solid fa-image"></i>
+                                        </a>
+                                        count++;
+                                    }
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <button onclick="xacMinhMau(@item.ID, 1)" class="btn-action btn-approve" title="Duyệt">
+                                    <i class="fa-solid fa-check"></i>
+                                </button>
+                                <button onclick="xacMinhMau(@item.ID, 2)" class="btn-action btn-reject" title="Từ chối">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        async function xacMinhMau(id, status) {
+        const title = status === 1 ? 'Xác nhận duyệt nhóm máu?' : 'Từ chối xác minh?';
+        const text = status === 1 ? 'Người dùng sẽ nhận được tích xanh xác thực.' : 'Người dùng sẽ phải gửi lại bằng chứng khác.';
+
+        Swal.fire({
+        title: title,
+        text: text,
+        icon: status === 1 ? 'question' : 'warning',
+        showCancelButton: true,
+        confirmButtonColor: status === 1 ? '#2e7d32' : '#c62828',
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: 'Hủy'
+        }).then(async (result) => {
+        if (result.isConfirmed) {
+        await goiApiDuyetMau(id, status);
+        }
+        });
+        }
+
+        async function goiApiDuyetMau(id, status) {
+        Swal.fire({
+        title: 'Đang xử lý...',
+        allowOutsideClick: false,
+        didOpen: () => { Swal.showLoading(); }
+        });
+
+        try {
+        const response = await fetch(`/api/NguoiDung/DuyetXacMinhMau?id=${id}&status=${status}`, {
+        method: 'POST'
+        });
+
+        if (response.ok) {
+        Swal.fire('Thành công!', 'Hệ thống đã cập nhật trạng thái.', 'success')
+        .then(() => location.reload());
+        } else {
+        Swal.fire('Lỗi!', 'Không thể cập nhật hồ sơ.', 'error');
+        }
+        } catch (error) {
+        Swal.fire('Lỗi!', 'Lỗi kết nối máy chủ.', 'error');
+        }
+        }
+    </script>
+}

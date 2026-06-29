@@ -1,0 +1,201 @@
+﻿@page
+@model QuanLyHienMauApi.Pages.Admin.QuanLyBaoCaoModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Quản lý Báo cáo";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Quản lý Báo cáo bài viết</h3>
+        <p class="text-muted small">Xử lý các báo cáo tin giả, tin sai sự thật từ cộng đồng bằng hộp thoại chi tiết.</p>
+    </div>
+    <span class="badge bg-danger rounded-pill px-3 py-2">@Model.DanhSachBaoCao.Count báo cáo mới</span>
+</div>
+
+<div class="custom-card">
+    <div class="table-responsive">
+        <table class="table mb-0 align-middle">
+            <thead class="bg-light">
+                <tr>
+                    <th class="ps-4">Người báo cáo</th>
+                    <th>Lý do báo cáo</th>
+                    <th>Nội dung tố cáo từ User</th>
+                    <th>Bài viết bị tố cáo</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.DanhSachBaoCao.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-5 text-muted">
+                            <i class="fa-solid fa-shield-cat fs-1 d-block mb-2"></i>
+                            Hệ thống sạch sẽ! Không có bài viết nào bị báo cáo.
+                        </td>
+                    </tr>
+                }
+                @foreach (var item in Model.DanhSachBaoCao)
+                {
+                    <tr>
+                        <td class="ps-4">
+                            <div class="fw-bold">@item.NguoiBaoCao?.HoTen</div>
+                            <div class="text-muted x-small">ID: #@item.NguoiBaoCaoID</div>
+                            <div class="text-muted x-small">
+                                <i class="fa-regular fa-clock me-1"></i>@item.NgayBaoCao.ToString("dd/MM/yyyy HH:mm")
+                            </div>
+                        </td>
+
+                        <td>
+                            <span class="badge bg-warning text-dark px-2 py-1">@item.LyDo</span>
+                        </td>
+
+                        <td>
+                            <div class="small text-muted text-wrap" style="max-width: 220px; word-break: break-word;">
+                                @(string.IsNullOrEmpty(item.ChiTiet) ? "Không có mô tả thêm" : item.ChiTiet)
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="fw-bold text-dark">#@item.YeuCauID - @item.YeuCau?.TenBenhVien</div>
+                            <div class="x-small text-muted">Người đăng: <span class="text-primary fw-bold">@item.YeuCau?.NguoiDang?.HoTen</span></div>
+                            
+                            <button type="button" class="btn btn-link text-decoration-none p-0 x-small fw-bold text-danger mt-1"
+                                    data-bs-toggle="modal" data-bs-target="#postModal_@item.ID">
+                                <i class="fa-solid fa-eye me-1"></i> Nhấn để xem chi tiết
+                            </button>
+                        </td>
+
+                        <td>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button onclick="xuLyBaoCao(@item.ID, 1)" class="btn btn-danger btn-sm rounded-3 px-3" title="Xác nhận tin giả & Khóa bài">
+                                    <i class="fa-solid fa-lock me-1"></i> Khóa bài
+                                </button>
+                                <button onclick="xuLyBaoCao(@item.ID, 2)" class="btn btn-outline-secondary btn-sm rounded-3" title="Bỏ qua báo cáo">
+                                    <i class="fa-solid fa-eye-slash"></i> Bỏ qua
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <div class="modal fade" id="postModal_@item.ID" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" style="border-radius: 15px;">
+                                <div class="modal-header bg-danger text-white" style="border-top-left-radius: 14px; border-top-right-radius: 14px;">
+                                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-file-invoice me-2"></i>Chi tiết bài đăng #@item.YeuCauID</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body p-4">
+                                    <div class="mb-3">
+                                        <label class="text-muted x-small d-block text-uppercase fw-bold">Người đăng bài viết</label>
+                                        <div class="fw-bold fs-6 text-dark"><i class="fa-solid fa-user-pen me-2 text-secondary"></i>@item.YeuCau?.NguoiDang?.HoTen</div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="text-muted x-small d-block text-uppercase fw-bold">Địa điểm tiếp nhận</label>
+                                        <div class="fw-bold text-danger mb-1"><i class="fa-solid fa-hospital me-2"></i>@item.YeuCau?.TenBenhVien</div>
+                                        <div class="small text-secondary border p-2 rounded bg-light">
+                                            <i class="fa-solid fa-location-dot text-danger me-2"></i>@item.YeuCau?.DiaChiBenhVien
+                                            @if (item.YeuCau?.ViDo != null && item.YeuCau?.ViDo != 0)
+                                            {
+                                                <div class="mt-1 text-end">
+                                                    <a href="https://www.google.com/maps?q=ViDo,KinhDo" target="_blank" class="text-primary fw-bold text-decoration-none x-small">
+                                                        <i class="fa-solid fa-map-location-dot me-1"></i>Xem vị trí Google Maps
+                                                    </a>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="text-muted x-small d-block text-uppercase fw-bold mb-1">Nhóm máu yêu cầu cần hiến</label>
+                                        <div class="d-flex flex-wrap gap-1">
+                                            @if (item.YeuCau?.ChiTiets != null && item.YeuCau.ChiTiets.Any())
+                                            {
+                                                foreach (var ct in item.YeuCau.ChiTiets)
+                                                {
+                                                    string colorClass = ct.MucDoKhanCap == 3 ? "bg-danger" : (ct.MucDoKhanCap == 2 ? "bg-warning text-dark" : "bg-secondary");
+                                                    string urgency = ct.MucDoKhanCap == 3 ? " [Khẩn cấp]" : (ct.MucDoKhanCap == 2 ? " [Ưu tiên]" : "");
+                                                    
+                                                    // Logic ẩn hiện lượng máu: nếu > 0 thì hiện, bằng 0 thì ẩn chuỗi rỗng
+                                                    string volumeText = ct.SoDonVi > 0 ? $" ({ct.SoDonVi}ml)" : "";
+
+                                                    <span class="badge @colorClass px-2 py-1">
+                                                        <i class="fa-solid fa-droplet me-1"></i>@ct.NhomMau@ct.Rh@volumeText@urgency
+                                                    </span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted small">Không giới hạn nhóm máu</span>
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="text-muted x-small d-block text-uppercase fw-bold mb-1">Nội dung tâm thư/mô tả bài đăng</label>
+                                        <div class="p-3 bg-light rounded text-dark small border-start border-danger border-4" style="white-space: pre-line; font-size: 13px;">
+                                            @(string.IsNullOrEmpty(item.YeuCau?.NoiDung) ? "Bài viết không có nội dung văn bản đi kèm." : item.YeuCau.NoiDung)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer bg-light" style="border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;">
+                                    <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Đóng cửa sổ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        async function xuLyBaoCao(id, status) {
+        const title = status === 1 ? 'Xác nhận khóa bài viết này?' : 'Xác nhận bỏ qua báo cáo?';
+        const text = status === 1 ? 'Bài viết này sẽ bị ẩn hoàn toàn khỏi ứng dụng di động do chứa tin giả.' : 'Bài viết được xác định là an toàn.';
+        const confirmColor = status === 1 ? '#c62828' : '#6c757d';
+
+        Swal.fire({
+        title: title,
+        text: text,
+        icon: status === 1 ? 'warning' : 'question',
+        showCancelButton: true,
+        confirmButtonColor: confirmColor,
+        cancelButtonColor: '#aaa',
+        confirmButtonText: 'Xác nhận',
+        cancelButtonText: 'Hủy'
+        }).then(async (result) => {
+        if (result.isConfirmed) {
+        await goiApiXuLyBaoCao(id, status);
+        }
+        });
+        }
+
+        async function goiApiXuLyBaoCao(id, status) {
+        Swal.fire({
+        title: 'Đang xử lý...',
+        allowOutsideClick: false,
+        didOpen: () => { Swal.showLoading(); }
+        });
+
+        try {
+        const response = await fetch(`/api/BaoCao/XuLyBaoCao?baoCaoId=${id}&status=${status}`, {
+        method: 'POST'
+        });
+
+        if (response.ok) {
+        Swal.fire('Thành công!', 'Hệ thống đã cập nhật trạng thái bài viết.', 'success')
+        .then(() => location.reload());
+        } else {
+        Swal.fire('Lỗi!', 'Không thể cập nhật trạng thái báo cáo.', 'error');
+        }
+        } catch (error) {
+        Swal.fire('Lỗi!', 'Mất kết nối với máy chủ.', 'error');
+        }
+        }
+    </script>
+}

@@ -1,0 +1,5 @@
+wwwroot\uploads\documents\de7724ed-d8ea-42d3-8b21-71bdfdfbf21b_qr.jpg
+wwwroot\CSS\style.css
+wwwroot\uploads\documents\20260412_giayphep_3218c678-5f0d-4ba8-ba59-46ff91dbc023.jpg
+wwwroot\uploads\documents\Giay-Phep-Hoat-Dong-Phong-Kham.jpg
+wwwroot\uploads\verify\7d73ef90-c873-4e73-813c-3f19c003a7bd_verify_1779356828396.jpg

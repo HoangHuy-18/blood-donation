@@ -1,0 +1,1598 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "QuanLyHienMauApi",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/BaoCao/GuiBaoCao": {
+      "post": {
+        "tags": [
+          "BaoCao"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBaoCaoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBaoCaoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBaoCaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BaoCao/XuLyBaoCao": {
+      "post": {
+        "tags": [
+          "BaoCao"
+        ],
+        "parameters": [
+          {
+            "name": "baoCaoId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CoSoYTe/upload-ho-so": {
+      "post": {
+        "tags": [
+          "CoSoYTe"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CoSoID": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "LoaiAnh": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "CoSoID": {
+                  "style": "form"
+                },
+                "LoaiAnh": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CoSoYTe/DuyetHoSo": {
+      "post": {
+        "tags": [
+          "CoSoYTe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "lyDo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CoSoYTe/GetFixedPoints": {
+      "get": {
+        "tags": [
+          "CoSoYTe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/register-personal": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/register-medical": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterMedical"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterMedical"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterMedical"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/forgot-password": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/reset-password": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/UpdateToken": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "userId": {
+                  "style": "form"
+                },
+                "token": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/GetLocation/{userId}": {
+      "get": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/UpdateLocation": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "viDo",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "kinhDo",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/login": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/GetProfile/{userId}": {
+      "get": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/UpdateProfile": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/Logout": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "userId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/UploadVerifyBlood": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "nhomMau": {
+                    "type": "string"
+                  },
+                  "heRh": {
+                    "type": "string"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "userId": {
+                  "style": "form"
+                },
+                "nhomMau": {
+                  "style": "form"
+                },
+                "heRh": {
+                  "style": "form"
+                },
+                "images": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/DuyetXacMinhMau": {
+      "post": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NguoiDung/GetLichSuHienMau/{userId}": {
+      "get": {
+        "tags": [
+          "NguoiDung"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/BaiVietCuaToi/{userId}": {
+      "get": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/DangKyHienMau": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "yeuCauId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nguoiHienId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/XacNhanDenHien": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "xacNhanId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/XacNhanDenHienBangQR/{qrCode}": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "qrCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/GetThongTinBangQR/{qrCode}": {
+      "get": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "qrCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/HoanTatHienMau": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KetQuaHienMau"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KetQuaHienMau"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/KetQuaHienMau"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/XacNhanThuCong": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "xacNhanID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/GetDanhSachNguoiHien/{yeuCauId}": {
+      "get": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "yeuCauId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/{id}": {
+      "delete": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "loaiTin",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/NguoiHienHuyDen/{yeuCauId}/{userId}": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "yeuCauId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/KetThucSuKien/{yeuCauId}": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "yeuCauId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/DanhDauKhongHien/{xacNhanId}": {
+      "post": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "xacNhanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/XacNhanHienMau/GetLichSuHien/{nguoiHienId}": {
+      "get": {
+        "tags": [
+          "XacNhanHienMau"
+        ],
+        "parameters": [
+          {
+            "name": "nguoiHienId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/YeuCauMau": {
+      "get": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "parameters": [
+          {
+            "name": "loaiTin",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauMau"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauMau"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauMau"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/YeuCauMau/{id}": {
+      "get": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauMau"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauMau"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauMau"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/YeuCauMau/GetRequests": {
+      "get": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/YeuCauMau/XacNhanChiaSeMau": {
+      "post": {
+        "tags": [
+          "YeuCauMau"
+        ],
+        "parameters": [
+          {
+            "name": "yeuCauId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "hospitalId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CaNhan": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NhomMau": {
+            "type": "string",
+            "nullable": true
+          },
+          "HeRh": {
+            "type": "string",
+            "nullable": true
+          },
+          "NgaySinh": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "SoLanHien": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NgayHienGanNhat": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "AnhXacMinh": {
+            "type": "string",
+            "nullable": true
+          },
+          "TrangThaiXacMinh": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ChieuCao": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "CanNang": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ThongTinTaiKhoan": {
+            "$ref": "#/components/schemas/NguoiDung"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CoSoYTe": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "MaSoThue": {
+            "type": "string",
+            "nullable": true
+          },
+          "AnhGiayPhep": {
+            "type": "string",
+            "nullable": true
+          },
+          "AnhQuyetDinh": {
+            "type": "string",
+            "nullable": true
+          },
+          "TrangThaiDuyet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ThongTinTaiKhoan": {
+            "$ref": "#/components/schemas/NguoiDung"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateBaoCaoDto": {
+        "type": "object",
+        "properties": {
+          "YeuCauId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NguoiBaoCaoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "LyDo": {
+            "type": "string",
+            "nullable": true
+          },
+          "ChiTiet": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KetQuaHienMau": {
+        "type": "object",
+        "properties": {
+          "XacNhanId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NgayHien": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "NhomMau": {
+            "type": "string",
+            "nullable": true
+          },
+          "HeRh": {
+            "type": "string",
+            "nullable": true
+          },
+          "LuongMau": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ChieuCao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CanNang": {
+            "type": "number",
+            "format": "double"
+          },
+          "HuyetApTamThu": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "HuyetApTamTruong": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "MatKhau": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NguoiDung": {
+        "required": [
+          "Email",
+          "HoTen",
+          "MatKhau",
+          "SDT"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "HoTen": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "SDT": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          },
+          "MatKhau": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "DiaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "ViDo": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "KinhDo": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "LoaiTaiKhoan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TrangThai": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TokenFCM": {
+            "type": "string",
+            "nullable": true
+          },
+          "CaNhan": {
+            "$ref": "#/components/schemas/CaNhan"
+          },
+          "CoSoYTe": {
+            "$ref": "#/components/schemas/CoSoYTe"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Register": {
+        "type": "object",
+        "properties": {
+          "HoTen": {
+            "type": "string",
+            "nullable": true
+          },
+          "SDT": {
+            "type": "string",
+            "nullable": true
+          },
+          "MatKhau": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "DiaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "ViDo": {
+            "type": "number",
+            "format": "double"
+          },
+          "KinhDo": {
+            "type": "number",
+            "format": "double"
+          },
+          "NgaySinh": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterMedical": {
+        "type": "object",
+        "properties": {
+          "HoTen": {
+            "type": "string",
+            "nullable": true
+          },
+          "SDT": {
+            "type": "string",
+            "nullable": true
+          },
+          "MatKhau": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "DiaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "ViDo": {
+            "type": "number",
+            "format": "double"
+          },
+          "KinhDo": {
+            "type": "number",
+            "format": "double"
+          },
+          "MaSoThue": {
+            "type": "string",
+            "nullable": true
+          },
+          "AnhGiayPhep": {
+            "type": "string",
+            "nullable": true
+          },
+          "AnhQuyetDinh": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResetPasswordRequest": {
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "MaOTP": {
+            "type": "string",
+            "nullable": true
+          },
+          "MatKhauMoi": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateProfileDto": {
+        "type": "object",
+        "properties": {
+          "UserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "HoTen": {
+            "type": "string",
+            "nullable": true
+          },
+          "SDT": {
+            "type": "string",
+            "nullable": true
+          },
+          "DiaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "ViDo": {
+            "type": "number",
+            "format": "double"
+          },
+          "KinhDo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "YeuCauMau": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NguoiDangID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "BenhVienID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "TenBenhVien": {
+            "type": "string",
+            "nullable": true
+          },
+          "DiaChiBenhVien": {
+            "type": "string",
+            "nullable": true
+          },
+          "ViDo": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "KinhDo": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "NoiDung": {
+            "type": "string",
+            "nullable": true
+          },
+          "SoNguoiCan": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "SoNguoiDaXacNhan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TrangThai": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NgayDang": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "NgayBatDau": {
+            "type": "string",
+            "nullable": true
+          },
+          "NgayKetThuc": {
+            "type": "string",
+            "nullable": true
+          },
+          "GioBatDau": {
+            "type": "string",
+            "nullable": true
+          },
+          "GioKetThuc": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoaiTin": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NguoiDang": {
+            "$ref": "#/components/schemas/NguoiDung"
+          },
+          "BenhVien": {
+            "$ref": "#/components/schemas/CoSoYTe"
+          },
+          "ChiTiets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/YeuCauMauChiTiet"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "YeuCauMauChiTiet": {
+        "required": [
+          "NhomMau",
+          "Rh"
+        ],
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "YeuCauID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NhomMau": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "Rh": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "SoDonVi": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "MucDoKhanCap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "YeuCau": {
+            "$ref": "#/components/schemas/YeuCauMau"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

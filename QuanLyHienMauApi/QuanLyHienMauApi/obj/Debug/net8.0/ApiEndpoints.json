@@ -1,0 +1,699 @@
+[
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.BaoCaoController",
+    "Method": "GuiBaoCao",
+    "RelativePath": "api/BaoCao/GuiBaoCao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuanLyHienMauApi.Dtos.CreateBaoCaoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.BaoCaoController",
+    "Method": "XuLyBaoCao",
+    "RelativePath": "api/BaoCao/XuLyBaoCao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "baoCaoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.CoSoYTeController",
+    "Method": "DuyetHoSo",
+    "RelativePath": "api/CoSoYTe/DuyetHoSo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "lyDo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.CoSoYTeController",
+    "Method": "GetFixedPoints",
+    "RelativePath": "api/CoSoYTe/GetFixedPoints",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.CoSoYTeController",
+    "Method": "UploadHoSo",
+    "RelativePath": "api/CoSoYTe/upload-ho-so",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "CoSoID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "LoaiAnh",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "DuyetXacMinhMau",
+    "RelativePath": "api/NguoiDung/DuyetXacMinhMau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "GuiMaXacNhan",
+    "RelativePath": "api/NguoiDung/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "GetLichSuHienMau",
+    "RelativePath": "api/NguoiDung/GetLichSuHienMau/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "GetLocation",
+    "RelativePath": "api/NguoiDung/GetLocation/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "GetProfile",
+    "RelativePath": "api/NguoiDung/GetProfile/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "Login",
+    "RelativePath": "api/NguoiDung/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyHienMauApi.Controllers.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "Logout",
+    "RelativePath": "api/NguoiDung/Logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "RegisterMedical",
+    "RelativePath": "api/NguoiDung/register-medical",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuanLyHienMauApi.Dtos.RegisterMedical",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "RegisterPersonal",
+    "RelativePath": "api/NguoiDung/register-personal",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuanLyHienMauApi.Dtos.Register",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "DatLaiMatKhau",
+    "RelativePath": "api/NguoiDung/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyHienMauApi.Dtos.ResetPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "UpdateLocation",
+    "RelativePath": "api/NguoiDung/UpdateLocation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "viDo",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "kinhDo",
+        "Type": "System.Double",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/NguoiDung/UpdateProfile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateDto",
+        "Type": "QuanLyHienMauApi.Dtos.UpdateProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "UpdateToken",
+    "RelativePath": "api/NguoiDung/UpdateToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.NguoiDungController",
+    "Method": "UploadVerifyBlood",
+    "RelativePath": "api/NguoiDung/UploadVerifyBlood",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "nhomMau",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "heRh",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "images",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "DeleteRegistration",
+    "RelativePath": "api/XacNhanHienMau/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "loaiTin",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "GetMyPosts",
+    "RelativePath": "api/XacNhanHienMau/BaiVietCuaToi/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "DangKyHienMau",
+    "RelativePath": "api/XacNhanHienMau/DangKyHienMau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yeuCauId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "nguoiHienId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "DanhdauKhongHien",
+    "RelativePath": "api/XacNhanHienMau/DanhDauKhongHien/{xacNhanId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xacNhanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "GetDanhSachNguoiHien",
+    "RelativePath": "api/XacNhanHienMau/GetDanhSachNguoiHien/{yeuCauId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yeuCauId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "GetLichSuHien",
+    "RelativePath": "api/XacNhanHienMau/GetLichSuHien/{nguoiHienId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nguoiHienId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "GetThongTinBangQR",
+    "RelativePath": "api/XacNhanHienMau/GetThongTinBangQR/{qrCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "qrCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "HoanTatHienMau",
+    "RelativePath": "api/XacNhanHienMau/HoanTatHienMau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QuanLyHienMauApi.Dtos.KetQuaHienMau",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "KetThucSuKien",
+    "RelativePath": "api/XacNhanHienMau/KetThucSuKien/{yeuCauId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yeuCauId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "NguoiHienHuyDen",
+    "RelativePath": "api/XacNhanHienMau/NguoiHienHuyDen/{yeuCauId}/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yeuCauId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "XacNhanDenHien",
+    "RelativePath": "api/XacNhanHienMau/XacNhanDenHien",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xacNhanId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "XacNhanDenHienBangQR",
+    "RelativePath": "api/XacNhanHienMau/XacNhanDenHienBangQR/{qrCode}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "qrCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.XacNhanHienMauController",
+    "Method": "MedicalConfirm",
+    "RelativePath": "api/XacNhanHienMau/XacNhanThuCong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xacNhanID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "GetActiveRequests",
+    "RelativePath": "api/YeuCauMau",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loaiTin",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "PostYeuCau",
+    "RelativePath": "api/YeuCauMau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yeuCau",
+        "Type": "QuanLyHienMauApi.Models.YeuCauMau",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "GetById",
+    "RelativePath": "api/YeuCauMau/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "PutYeuCau",
+    "RelativePath": "api/YeuCauMau/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateData",
+        "Type": "QuanLyHienMauApi.Models.YeuCauMau",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "DeleteYeuCauMau",
+    "RelativePath": "api/YeuCauMau/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "GetRequests",
+    "RelativePath": "api/YeuCauMau/GetRequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuanLyHienMauApi.Controllers.YeuCauMauController",
+    "Method": "XacNhanChiaSeMau",
+    "RelativePath": "api/YeuCauMau/XacNhanChiaSeMau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yeuCauId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "hospitalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
